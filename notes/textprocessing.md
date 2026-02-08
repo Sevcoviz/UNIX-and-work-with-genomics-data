@@ -300,3 +300,35 @@ user19@ngs-course-2026:~/data$ < luscinia_vars_flags.vcf.gz zcat | grep -v "^#" 
 10
 75
 ```
+
+
+
+## Join and paste data
+`join` - Join lines of two files on a common field (e.g., gene ID, chromosome position)
+`paste` - Merge lines of files horizontally (side by side)
+- align files by a common field (e.g., gene ID, chromosome position)
+- no key column is required, but files must be sorted by the join field
+- 
+
+``` bash
+# Join file1.txt and file2.txt based on 2nd and 3rd column
+sort -k2,2 file1.txt > file1.tmp
+sort -k3,3 file2.txt > file2.tmp
+join -12 -23 file1.tmp file2.tmp > joined-file.txt
+
+# Merge vertically two files
+paste file1.txt file2.txt > file-merged.txt
+
+# Transpose file
+< filte.txt paste - -
+```
+
+## Exercise 7
+### Convert FASTQ file to TAB separated file with each read on one line
+``` bash
+cat *.fastq |
+paste - - - - |
+cut --complement -f3 \
+> reads.tab
+```
+
