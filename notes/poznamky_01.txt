@@ -1,0 +1,15 @@
+Poznamky 01
+
+ls -ashg
+
+Compressed data
+gunzip file.gz
+zcat fastq.gz | less ... pozriem sa na obsah zompressed file
+tar -xzvf fastq.tar.gz
+
+less <file>
+Vnutri viem ocislovat riadky cez -N
+Vnutri -S enter mi prestane zahynat riadky do viacerych
+Space pre scrolling
+b go back
+

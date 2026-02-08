@@ -1,0 +1,22 @@
+ASCII 
+PHRED score = -10*log_{10} P
+
+Annotations
+	General Feature Format GFF
+	Gene Transfer Format GTF
+	9 TAB separated fields
+
+Scoring annotation: BED 
+
+Scoring Variation Data: VCF Variant call format
+	Header ##
+	Data # hlavicka
+	1 variant = 1 line ale moze byt aj multiple
+	Variants (rows) vs Samples (columns)
+	Haplotyoe/Genotype GT vo formate 0|0 ako alelu
+		side is chromosome - we use phaser to tell the parent chromosomes
+		0|0 ake varianty sa vyskytli v danej sample, 0|0 znemana ze v tejto sample som nevidela variant ale celkovo ten variant niekde je
+		1|0 heterozygot AT (0 is reference)	
+		1|2 = v momente ked mame viac ALT alleles, 1 je prva ALT a 2 je druha ALT
+	
+
