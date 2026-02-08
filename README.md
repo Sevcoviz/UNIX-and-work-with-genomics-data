@@ -1,5 +1,7 @@
 # UNIX and Work with Genomics Data
 
+Autor: Zuzana Sevcovicova
+
 ## Overview
 
 This repository contains materials and exercises from the Next-Generation Sequencing (NGS) course, focusing on UNIX command-line tools and genomics data analysis. The course content follows the curriculum available at [NGS Course - Prague February 2026](https://ngs-course.readthedocs.io/en/praha-february-2026/index.html).
