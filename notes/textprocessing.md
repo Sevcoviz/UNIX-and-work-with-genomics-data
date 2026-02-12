@@ -8,12 +8,13 @@ A$      #Match A at the end of line
 [0-9]   #Match numerichal character
 [A-Z]   # Match alphabetical character
 [ATGC]  # Match A,T,C,G
-[^A]
-. A*
-A{2}
-A{1,} or A+
-A{1,3}
-AATT|TTAA
+[^A]    # Match any character except A
+. A*    # Match A zero or more times (e.g., "", "A", "AAAA")
+A{2}    # Match exactly 2 A's (i.e., "AA")
+A{1,} or A+   # Match at least one A
+A{1,3}  # Match between 1 and 3 A's
+AATT|TTAA  # Match AATT or TTAA (useful for restriction sites)
+\d      # Match digit (same as [0-9])
 \s      # match whitespacve
 \t 
 ```
@@ -271,6 +272,36 @@ Flag -r - use extended regular expressions \
 ``` bash
 < luscinia_vars_flags.vcf.gz zcat | grep -v "^##" | cut -f8 | sed -r "s/.*DP=([0-9]+);.*/\1/" | head
 ```
+or
+``` bash
+ < $FILE zcat | grep -o -E 'DP=([0-9]+)' | sed 's/DP=//' | head
+```
+
+## Exercise 6
+### What is the number of SNPs per chromosome in the VCF file?? ...without using cut command:
+``` bash
+< $FILE zcat | grep -v "^##" | grep -o -E '^chr[Z0-9]+' | sort | uniq -c | sort -nr
+```
+or 
+``` bash
+< $FILE zcat | grep -v "^##" | awk '{print ($1)}' | sort | uniq -c | sort -k2,2 -nr
+```
+
+## Exercise 7
+### Microsatellites statistics: Extract all AT dinucleotides repeating at least twice and calculate their frequency distribution in the whole dataset.
+``` bash
+cat *.fastq | grep -E "^[ATCG]+$" | grep -o -E "(AT){2,}" | sort | uniq -c | less -S
+ 137125 ATAT
+  10952 ATATAT
+   1159 ATATATAT
+    243 ATATATATAT
+    122 ATATATATATAT
+     61 ATATATATATATAT
+     20 ATATATATATATATAT
+      6 ATATATATATATATATAT
+      2 ATATATATATATATATATAT
+```
+
 
 
 `grep -o`
